@@ -4,6 +4,11 @@ describe "Static pages" do
 
   subject { page }
 
+  shared_examples_for "all static pages" do
+    it { should have_selector('h1', text: heading) }
+    it { should have_title(full_title(page_title)) }
+  end
+  
   describe "Home page" do
     before { visit root_path }
 
@@ -32,4 +37,5 @@ describe "Static pages" do
     it { should have_content('Contact') }
     it { should have_title(full_title('Contact')) }
   end
+
 end
